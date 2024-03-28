@@ -1,21 +1,27 @@
 import React from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { getHeroByID } from '../helpers';
+import { useMemo } from 'react';
 
 export const HeroPage = () => {
 
   const { id } = useParams();
-  const hero = getHeroByID(id);
+  
+  /**
+   * Se utiliza useMemo para que cada vez las dependencias cambien , en
+   * este caso será el id el cual cambia  
+   */
+  const hero = useMemo(() => getHeroByID(id), [id]);
 
   const navegate = useNavigate();
 
-  const restNavegate = ()=>{
+  const onNavegateBack = () => {
     navegate(-1);
   };
 
   if (!hero) {
     return <Navigate to='/marvel' />
-  }
+  };
 
   return (
     <div>
@@ -32,7 +38,8 @@ export const HeroPage = () => {
           </ul>
           <button
             className='mx-3 mt-4 btn btn-primary'
-            onClick={restNavegate}> Regresar
+            onClick={onNavegateBack}>
+            Regresar
           </button>
         </div>
       </div>
