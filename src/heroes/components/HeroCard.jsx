@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 export const HeroCard = ({
     id,
     superhero,
-    publisher,
     alter_ego,
     first_appearance,
     characters }) => {
@@ -33,7 +32,7 @@ export const HeroCard = ({
                                 <small>{first_appearance}</small>
                             </p>
 
-                            <Link to={`/hero/${id}`}>
+                            <Link to={`/heroes/${id}`}>
                                 Más Información...
                             </Link>
                         </div>

@@ -24,7 +24,7 @@ export const HeroesRoutes = () => {
                         element={<SearchPage />}
                     />
                     <Route
-                        path="hero"
+                        path="heroes/:id"
                         element={<HeroPage />}
                     />
                     <Route
